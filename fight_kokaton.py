@@ -26,6 +26,7 @@ class Beam:
     def is_out(self):
         return self.rct.bottom < 0
 
+
 def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
     """
     オブジェクトが画面内or画面外を判定し，真理値タプルを返す関数
@@ -124,6 +125,7 @@ class Beam:
             self.rct.move_ip(self.vx, self.vy)
             screen.blit(self.img, self.rct)    
 
+
 class Score:
     def __init__(self):
         """
@@ -131,16 +133,17 @@ class Score:
         """
         self.fonto=pg.font.SysFont("hgp創英角ポップ体",30)
 
-        self.score = 0
+        self.score = 0#初期値を０に
         
-        self.img = self.fonto.render(f"score：{self.score}", 0, (0,0,255))
+        self.img = self.fonto.render(f"score：{self.score}", 0, (0,0,255))#フォントの色、表示するものを決める
         self.rect = self.img.get_rect()
-        self.rect.center = (100, HEIGHT - 50) 
+        self.rect.center = (100, HEIGHT - 50) #スコアの表示位置を指定
 
     def update(self, screen: pg.Surface):
         """現在のスコアを表示"""
         self.img = self.fonto.render(f"score：{self.score}", 0, (0,0,255))
         screen.blit(self.img, self.rect)
+
 
 class Bomb:
     """
@@ -171,6 +174,7 @@ class Bomb:
             self.vy *= -1
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
+
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
